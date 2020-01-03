@@ -14,4 +14,7 @@
  <img src="<?php echo $settings->photo_one_src; ?>" />
  <!-- The after image is last -->
  <img src="<?php echo $settings->photo_two_src; ?>" />
+
+<h1> <?php echo $settings->before_img_text; ?> </h1>
+<h1> <?php echo $settings->after_img_text; ?> </h1>
 </div>

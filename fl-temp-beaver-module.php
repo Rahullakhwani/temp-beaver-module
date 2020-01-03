@@ -14,6 +14,7 @@ class temp_beaver_module_funtion {
 	
 		if( class_exists( 'FLBuilder' ) ) {
 			require_once 'modules/infobox/infobox.php';
+			require_once 'modules/textmodule/textmodule.php';
 		}
 	
 	}
