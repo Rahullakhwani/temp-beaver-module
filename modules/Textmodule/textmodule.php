@@ -116,12 +116,14 @@ FLBuilder::register_module( 'textmodule', array(
 						),
 						'toggle'  => array(
 							'line'  => array(
-								'fields' => array('separator_position'),
+								'fields' => array('separator_position', 'separator_line', 'line_align'),
 							),
 							'line_icon' => array(
-								'fields' => array('separator_position'),
+								'sections' => array( 'separator_icon_basics' ),
+								'fields' => array('separator_position', 'separator_line' ),
 							),
 							'line_image' => array(
+								'sections' => array( 'separator_image' ),
 								'fields' => array('separator_position'),
 							),
 							'line_text' => array(
@@ -138,9 +140,65 @@ FLBuilder::register_module( 'textmodule', array(
 							'top'    => __( 'Top', 'fl-builder' ),
 							'bottom' => __( 'Bottom', 'fl-builder' ),
 						),
-					),	
+					),
+					'separator_line' => array(
+						'type'    => 'select',
+						'label'  => __( 'Line Style', 'fl-builder' ),
+						'default' => 'solid',
+						'options' => array(
+							'solid'  => __( 'Solid', 'fl-builder' ),
+							'dashed' => __( 'Dashed', 'fl-builder' ),
+							'dotted' => __( 'Dotted', 'fl-builder' ),
+						),
+						'preview' => array(
+							'type'     => 'css',
+							'selector' => '',
+						),
+					),
+					'line_align' => array(
+						'type'    => 'align',
+						'label'  => __( 'Line Align', 'fl-builder' ),
+						'default' => 'center',
+						'preview' => array(
+								'type'     => 'css',
+								'selector' => '',
+							),
+					),
 				),
-
 			),
-		),
-	)));
+			'separator_icon_basics' => array(
+				'title'  => __( 'Icon settings', 'fl-builder' ),
+				'fields' => array(
+					'icon'                 => array(
+						'type'        => 'icon',
+						'label'       => __( 'Icon', 'fl-builder' ),
+						'show_remove' => true,
+					),
+					'icon_size'            => array(
+						'type'        => 'text',
+						'label'       => __( 'Size', 'fl-builder' ),
+						'placeholder' => '20',
+						'maxlength'   => '4',
+						'size'        => '5',
+						'description' => 'px',
+						'preview'     => array(
+							'type'     => 'css',
+							'selector' => '',
+						),
+
+					),
+				),
+			),
+			'separator_image'  => array(
+				'title'  => __( 'Image Basics', 'fl-builder' ),
+				'fields' => array(
+					'photo'               => array(
+						'type'        => 'photo',
+						'label'       => __( 'Photo', 'fl-builder' ),
+						'show_remove' => true,
+					),
+				)
+			)
+		)
+	)
+));
