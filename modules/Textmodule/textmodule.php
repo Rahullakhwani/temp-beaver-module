@@ -42,7 +42,7 @@ FLBuilder::register_module( 'textmodule', array(
 						'label' => __('Heading', 'fl-builder'),
 						'preview' => array(
 							'type'=> 'text',
-							'selector'=>'',
+							'selector'=>'.fl-textbox-heading',
 						),
 					),
 					'text_link' =>array(
@@ -78,7 +78,7 @@ FLBuilder::register_module( 'textmodule', array(
 						'show_alpha'  => true,
 						'preview'     => array(
 							'type'     => 'css',
-							'selector' => '.fl-textbox, .fl-textbox *',
+							'selector' => '.fl-textbox, .fl-textbox ',
 							'property' => 'color',
 						),
 					),
@@ -94,6 +94,10 @@ FLBuilder::register_module( 'textmodule', array(
 							'h5' => 'h5',
 							'h6' => 'h6',
 						),
+						// 'preview' => array(
+						// 	'type' => 'text',
+						// 	'selector' => '.fl-textbox, .fl-textbox *',
+						// ),
 					),
 					'typography' => array(
 						'type'       => 'typography',
@@ -112,7 +116,6 @@ FLBuilder::register_module( 'textmodule', array(
 							'line'       => __( 'Separator-Line', 'fl-builder' ),
 							'line_icon'  => __( 'Separator-Line With Icon', 'fl-builder' ),
 							'line_image' => __( 'Separator-Line With Image', 'fl-builder' ),
-							'line_text'  => __( 'Separator-Line With Text', 'fl-builder' ),
 						),
 						'toggle'  => array(
 							'line'  => array(
@@ -126,9 +129,7 @@ FLBuilder::register_module( 'textmodule', array(
 								'sections' => array( 'separator_image' ),
 								'fields' => array('separator_position'),
 							),
-							'line_text' => array(
-								'fields' => array('separator_position'),
-							),
+							
 						),
 					),
 					'separator_position' => array(
@@ -152,7 +153,8 @@ FLBuilder::register_module( 'textmodule', array(
 						),
 						'preview' => array(
 							'type'     => 'css',
-							'selector' => '',
+							'selector' => '.fl-separator',
+							'property' => 'border',
 						),
 					),
 					'line_align' => array(
