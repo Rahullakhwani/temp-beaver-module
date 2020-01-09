@@ -3,7 +3,7 @@
 
 if ( ! empty( $settings->color ) ) {
 	FlBuilderCSS::rule( array(
-		'selector'=> ".fl-node-$id .fl-textbox",
+		'selector'=> ".fl-node-$id .fl-description",
 		'props'    => array(
 			'color' => $settings->color,
 		),
@@ -24,8 +24,22 @@ FLBuilderCSS::typography_field_rule( array(
 	'setting_name' => 'typography',
 	'selector'     => ".fl-node-$id .fl-textbox .fl-description",
 ) );
+
+FLBuilderCSS::border_field_rule( array(
+	'settings' 	=> $settings,
+	'setting_name' 	=> 'my_border',
+	'selector' 	=> ".fl-node-$id .bg-border",
+) );
+
 ?>
 
+	/* Heading Css */
+
+.fl-node-<?php echo $id; ?> .fl-heading-container {
+	text-align: <?php echo $settings->heading_align; ?>;
+}
+
+	/* Icon Css */ 
 .fl-node-<?php echo $id; ?> .icon-wrap i {
 	font-size: <?php echo $settings->icon_size; ?>px;
 }
@@ -64,8 +78,10 @@ FLBuilderCSS::typography_field_rule( array(
 		}
 	?>
 }
+/* Icon Css End */
 
-<?php echo $settings->icon_align;
-var_dump($settings);
-// wp_die();
-?>
+/* Background Property */
+
+.fl-node-<?php echo $id; ?> .fl-bg-container {
+	background: <?php echo '#'.$settings->bg_color; ?>;
+}
