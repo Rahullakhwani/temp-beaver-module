@@ -64,24 +64,24 @@ FLBuilder::register_module( 'textmodule', array(
 					),
 					'icon_style'            => array(
 						'type'    => 'select',
-						'label'   => __( 'Icon Background Style', 'uabb' ),
+						'label'   => __( 'Icon Background Style', 'fl-builder' ),
 						'default' => 'simple',
 						'options' => array(
-							'simple' => __( 'Simple', 'uabb' ),
-							'circle' => __( 'Circle Background', 'uabb' ),
+							'simple' => __( 'Simple', 'fl-builder' ),
+							'circle' => __( 'Circle Background', 'fl-builder' ),
 						),
 						'toggle'  => array(
 							'simple' => array(
 								'fields' => array(),
 							),
 							'circle' => array(
-								'fields' => array( 'icon_color_preset', 'icon_bg_color', 'icon_bg_hover_color', 'icon_three_d' ),
+								'fields' => array( 'icon_bg_color',   ),
 							),	
 						),
 					),
 					'icon_bg_color'           => array(
 						'type'        => 'color',
-						'label'       => __( 'Icon Background Color', 'uabb' ),
+						'label'       => __( 'Icon Background Color', 'fl-builder' ),
 						'default'     => '',
 						'show_reset'  => true,
 						'connections' => array( 'color' ),
@@ -165,7 +165,6 @@ FLBuilder::register_module( 'textmodule', array(
 							'h5' => 'h5',
 							'h6' => 'h6',
 						),
-
 					),
 					'typography' => array(
 						'type'       => 'typography',
@@ -182,21 +181,21 @@ FLBuilder::register_module( 'textmodule', array(
 						'options' => array(
 							'none'       => __( 'None', 'fl-builder' ),
 							'line'       => __( 'Separator-Line', 'fl-builder' ),
-							'line_icon'  => __( 'Separator-Line With Icon', 'fl-builder' ),
-							'line_image' => __( 'Separator-Line With Image', 'fl-builder' ),
+							// 'line_icon'  => __( 'Separator-Line With Icon', 'fl-builder' ),
+							// 'line_image' => __( 'Separator-Line With Image', 'fl-builder' ),
 						),
 						'toggle'  => array(
 							'line'  => array(
-								'fields' => array('separator_position', 'separator_line', 'line_align'),
+								'fields' => array('separator_position', 'separator_thickness', 'separator_style', 'separator_color', 'separator_width', 'separator_align'),
 							),
-							'line_icon' => array(
+							/*'line_icon' => array(
 								'sections' => array( 'separator_icon_basics' ),
 								'fields' => array('separator_position', 'separator_line' ),
 							),
 							'line_image' => array(
 								'sections' => array( 'separator_image' ),
 								'fields' => array('separator_position'),
-							),
+							),*/
 
 						),
 					),
@@ -210,7 +209,25 @@ FLBuilder::register_module( 'textmodule', array(
 							'bottom' => __( 'Bottom', 'fl-builder' ),
 						),
 					),
-					'separator_line' => array(
+					'separator_thickness' => array(
+						'type'        => 'unit',
+						'label'       => __( 'Thickness', 'fl-builder' ),
+						'placeholder' => '1',
+						'default' => '1',
+						'slider'      => array(
+							'min'  => 1,
+							'max'  => 10,
+							'step' => 1,
+						),
+						'units'       => array( 'px' ),
+						'preview'     => array(
+							'type'      => 'css',
+							'selector'  => '.fl-my-separator',
+							'property'  => 'border-top-width',
+							'unit'      => 'px',
+						),
+					),
+					'separator_style' => array(
 						'type'    => 'select',
 						'label'  => __( 'Line Style', 'fl-builder' ),
 						'default' => 'solid',
@@ -221,22 +238,44 @@ FLBuilder::register_module( 'textmodule', array(
 						),
 						'preview' => array(
 							'type'     => 'css',
-							'selector' => '.fl-separator',
+							'selector' => '.fl-my-separator',
 							'property' => 'border-top-property',
 						),
 					),
-					'line_align' => array(
+					'separator_color'     => array(
+						'type'        => 'color',
+						'connections' => array( 'color' ),
+						'label'       => __( 'Color', 'fl-builder' ),
+						'default'     => '',
+						'show_alpha'  => true,
+						'show_reset'  => true,
+					),
+					'separator_width' => array(
+						'type'        => 'unit',
+						'label'       => __( 'Width', 'fl-builder' ),
+						'placeholder' => '100',
+						'units'       => array(
+							'px',
+						),
+						'slider'      => array(
+							'min'  => 0,
+							'max'  => 1000,
+							'step' => 10,
+						),
+					),
+					'separator_align' => array(
 						'type'    => 'align',
 						'label'  => __( 'Line Align', 'fl-builder' ),
 						'default' => 'center',
 						'preview' => array(
 							'type'     => 'css',
-							'selector' => '',
+							'selector' => '.fl-my-separator-parent',
+							'property'  => 'text-align',
 						),
 					),
 				),
 			),
-			'separator_icon_basics' => array(
+			/*'separator_icon_basics' => array(
 				'title'  => __( 'Icon settings', 'fl-builder' ),
 				'fields' => array(
 					'icon'                 => array(
@@ -245,8 +284,8 @@ FLBuilder::register_module( 'textmodule', array(
 						'show_remove' => true,
 					),
 				),
-			),
-			'separator_image'  => array(
+			),*/
+			/*'separator_image'  => array(
 				'title'  => __( 'Image Basics', 'fl-builder' ),
 				'fields' => array(
 					'photo'               => array(
@@ -255,7 +294,7 @@ FLBuilder::register_module( 'textmodule', array(
 						'show_remove' => true,
 					),
 				)
-			)
+			)*/
 		)
 	),
 	'Dimensions' => array(
@@ -267,17 +306,17 @@ FLBuilder::register_module( 'textmodule', array(
 					'padding'=> array(
 						'type'=> 'dimension',
 						'label'      => __( 'Content Padding', 'fl-builder' ),
-						'slider'     => array(
-							'px' => array(
+						'slider'    => array(
 								'min'  => 0,
 								'max'  => 1000,
-								'step' => 1000,
-							),
+								'step' => 10,
 						),
 						'units'      => array( 'px' ),
 						'preview'    => array(
 							'type'      => 'css',
-							'selector'  => '.dimension-bar',
+							'selector'  => '.fl-bg-container',
+							'property' => 'padding',
+							'unit' => 'px',
 						),
 					),
 				),
