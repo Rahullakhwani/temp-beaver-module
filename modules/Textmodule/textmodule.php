@@ -75,9 +75,17 @@ FLBuilder::register_module( 'textmodule', array(
 								'fields' => array(),
 							),
 							'circle' => array(
-								'fields' => array( 'icon_bg_color',   ),
+								'fields' => array( 'icon_color', 'icon_bg_color' ),
 							),	
 						),
+					),
+					'icon_color'           => array(
+						'type'        => 'color',
+						'label'       => __( 'Icon Color', 'fl-builder' ),
+						'default'     => '',
+						'show_reset'  => true,
+						'connections' => array( 'color' ),
+						'show_alpha'  => true,
 					),
 					'icon_bg_color'           => array(
 						'type'        => 'color',

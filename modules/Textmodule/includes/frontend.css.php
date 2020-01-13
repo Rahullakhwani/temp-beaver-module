@@ -57,12 +57,11 @@ if ( 'line' == $settings->separator ) { ?>
 }
 
 .fl-node-<?php echo $id; ?> .my-icon-wrap {
-	text-align: <?php echo $settings->icon_align; ?>;
+	text-align: -webkit-<?php echo $settings->icon_align; ?>;
 }
 
 .fl-node-<?php echo $id; ?> .my-icon-wrap i,
 .fl-node-<?php echo $id; ?> .my-icon-wrap i:before{
-
 
 	<?php 
 		if ( 'simple' != $settings->icon_style ) { 
@@ -73,12 +72,14 @@ if ( 'line' == $settings->separator ) { ?>
 	<?php
 		if ( 'circle' == $settings->icon_style ) {
 	?>
+		color: <?php echo '#'.$settings->icon_color; ?>;
 		background: <?php echo '#'.$settings->icon_bg_color; ?>;
 		border-radius: 100px;
 		line-height: <?php echo $settings->icon_size * 2; ?>px;
 		height: <?php echo $settings->icon_size * 2; ?>px; 
 		width: <?php echo $settings->icon_size * 2; ?>px;
 		text-align: center;
+		display: block;
 	<?php 
 	
 		}
